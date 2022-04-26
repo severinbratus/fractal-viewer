@@ -39,13 +39,13 @@ def f(z, imax, rmax):
             return i
         ### Fraktali kuju võib muuta alloleva valemi kaudu.
         ## Mandelbrot fractal
-        #z = z*z + c
+        z = z*z + c
         ## Burning ship fractal
-        #z = np.square(np.complex(np.abs(np.real(z)), np.abs(np.imag(z)))) + c
+        # z = np.square(np.complex(np.abs(np.real(z)), np.abs(np.imag(z)))) + c
         ## Tricorn fractal
         #z = np.square(np.conj(z)) + c
         ## Custom
-        z = z*z*z*z + c
+        #z = z*z*z*z + c
     return imax
 
 @njit(float64[:,:](float64, float64, float64, float64, uint16, uint16, uint16, uint8), parallel=True)
