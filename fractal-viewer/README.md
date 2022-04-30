@@ -1,4 +1,4 @@
-## Fractal Viewer (formerly Project Benoit)
+## Fractal Viewer
 
 This was written back in 2018, as a high-school programming project. Thus, the comments are in Estonian.
 

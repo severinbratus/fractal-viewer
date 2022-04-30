@@ -6,14 +6,14 @@ When x86 programs assembled by `gcc` are called from the command-line, `argc` (t
 
 Written in x86 assembly with AT&T syntax. I do not remember if it obeys any calling conventions.
 
-# Assembly
+## Assembly
 
 ``` sh
 gcc -no-pie -o fact.out fact.s
 ./fact.out
 ```
 
-# Usage
+## Usage
 
 The usage is ridiculous, as the way to pass the argument to the factorial function is through the number of arguments:
 
