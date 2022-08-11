@@ -1,6 +1,6 @@
 # Factorial with a recursive main routine
 
-Originated as a joke, since we wondered if it is possible to write an implementation of factorial that has no subroutines alongside the main routine. It is.
+Originated as a joke, since we wondered if it is possible to write an implementation of factorial that has no subroutines alongside the main routine. It is possible.
 
 When x86 programs assembled by `gcc` are called from the command-line, `argc` (the argument count) is contained in the `%rdi` register. The main routine recursively calls itself, while decrementing `%rdi` on each subsequent call.
 
@@ -15,7 +15,7 @@ gcc -no-pie -o fact.out fact.s
 
 ## Usage
 
-The usage is ridiculous, as the way to pass the argument to the factorial function is through the number of arguments:
+The usage is ridiculous, as the way to pass the argument to the factorial function is through the number of arguments[^1]:
 
 ``` sh
 [ ~ ]$ ./fact.out two three four five six seven
@@ -43,3 +43,4 @@ Or you could generate some dummy arguments with `yes` and pass them with `xargs`
 7! = 5040
 ```
 
+[^1]: Note that counting starts from two, since the program name, `fact.out` is also in the argument vector.
