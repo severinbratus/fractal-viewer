@@ -125,12 +125,10 @@ endsetignorecase:
     ## end loading phase
 
 
-
     # the longest common subsequence algorithm is as follows:
     # first, compute lcs lengths for string prefixes in a matrix,
     # second, backtrace the lcs from the matrix
     #   and write in two boolean arrs (one for each file)
-
 
 
     ## begin dynamic programming phase
@@ -298,11 +296,9 @@ endforloopm:
     # end dynamic programming phase
 
 
-
     # now we have a table (matrix) with lcs lengths.
     # now backtrace the lcs by taking the last entry in the matrix,
     #   and finding how it was derived from the empty seq.
-
 
 
     # begin backtracking phase
@@ -424,12 +420,10 @@ basecasefound:
     # end backtracking phase
 
 
-
     # after backtracing the lcs,
     #   output differing lines.
     # remember, barr_1[i] == True means that i-th line is in lcs
     #   (counting from 0)
-
 
 
     # begin output phase
@@ -637,13 +631,7 @@ noignoreblanklines_2:
 ####)
 
 
-
-
 ####(
-
-#    ## check if rngi != 0
-#    cmpq    $0, %r10
-#    je      no_output_1
 
     # for output, at least rngi or rngj has to be greater than 0
     cmpq    $0, %r10
@@ -711,15 +699,8 @@ xaxx:
     # print outbuf_3 to stdout
     movq    $0, %rax        # no vec regs for printf
     call    printf
-    ##cf
 
     # print outpuf_2 to stdout
-#    movq    $1, %rax        # 1 for sys_write
-#    movq    $1, %rdi        # 1 for stdout
-#    movq    $outbuf_2, %rsi # content address,
-#    addq    $8, %rsi        # displaced by 1 quad.
-#    movq    outbuf_2(, 1), %rdx # buf size, stored in first quad
-#    call    write
     movq    $outbuf_2, %rdi
     addq    $8, %rdi
     movq    outbuf_2(, 1), %rcx
@@ -751,15 +732,6 @@ xxdx:
     # print outbuf_3 to stdout
     movq    $0, %rax        # no vec regs for printf
     call    printf
-    ##cf
-
-#    # print outbuf_1 to stdout
-#    movq    $1, %rax        # 1 for sys_write
-#    movq    $1, %rdi        # 1 for stdout
-#    movq    $outbuf_1, %rsi # content address,
-#    addq    $8, %rsi        # displaced by 1 quad.
-#    movq    outbuf_1(, 1), %rdx # buf size, stored in first quad
-#    call    write
 
     movq    $outbuf_1, %rdi
     addq    $8, %rdi
@@ -850,15 +822,6 @@ endcxx:
     movq    $eol, %rdi
     movq    $0, %rax        # no vec regs for printf
     call    printf
-    ##cf
-
-#    # print outbuf_1 to stdout
-#    movq    $1, %rax        # 1 for sys_write
-#    movq    $1, %rdi        # 1 for stdout
-#    movq    $outbuf_1, %rsi # content address,
-#    addq    $8, %rsi        # displaced by 1 quad.
-#    movq    outbuf_1(, 1), %rdx # buf size, stored in first quad
-#    call    write
 
     movq    $outbuf_1, %rdi
     addq    $8, %rdi
@@ -869,15 +832,6 @@ endcxx:
     movq    $delim, %rdi
     movq    $0, %rax        # no vec regs for printf
     call    printf
-    ##cf
-
-    # print outpuf_2 to stdout
-#    movq    $1, %rax        # 1 for sys_write
-#    movq    $1, %rdi        # 1 for stdout
-#    movq    $outbuf_2, %rsi # content address,
-#    addq    $8, %rsi        # displaced by 1 quad.
-#    movq    outbuf_2(, 1), %rdx # buf size, stored in first quad
-#    call    write
 
     movq    $outbuf_2, %rdi
     addq    $8, %rdi
@@ -903,7 +857,6 @@ no_output:
     ## if i != m, take a common step in file_1
     movq    m, %rdi
     cmpq    %rdi, %r14
-#    cmpq    $m, %r14
     je      endnewlineloop_1b # if ==, skip incrementation
 
     incq    %r14
@@ -971,9 +924,7 @@ endforloopmn:
     movq    %rbp, %rsp      # clear local variables from stack
     popq    %rbp            # restore prev base ptr loc
     # exit normally
-#    movq    $60, %rax       # 60 for sys_exit
     movq    $0, %rdi        # OK
-#    syscall
     call    exit
 
 err:
@@ -989,12 +940,8 @@ err:
     movq    %rbp, %rsp      # clear local variables from stack
     popq    %rbp            # restore prev base ptr loc
     # exit non-normally
-#    movq    $60, %rax       # 60 for sys_exit
     movq    $1, %rdi        # NOT OK
-#    syscall
     call exit
-
-
 
 
 ## subroutine pow
@@ -1036,8 +983,6 @@ endpowloop:
     popq    %rbp            # restore prev base ptr loc
 
     ret
-
-
 
 
 ## subroutine load
@@ -1171,11 +1116,9 @@ loadif:
     movq    $0, %r13
     movq    $0, %r12
 
-
 endloadif:
 
     incq    %rbx            # incr char idx in text
-
     jmp     loadloop           # continue
 
 endloadloop:
