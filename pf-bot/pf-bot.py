@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -13,24 +10,14 @@ from time import sleep
 import subprocess as sp
 import re
 
-
-# In[2]:
-
-
 import discord
 from discord.ext import commands, tasks
 
 
-# In[3]:
-
-
 intents = discord.Intents.default()
-# intents.members = True # Subscribe to the privileged members intent
-token = 'MTA4NzY5NjIzOTY2OTMwMTM1MA.GUqNwo.iEN0jORgTbzP5k7aSZ3qUKs_jFoyrNndFYeHgY'
+with open('token.txt') as fin:
+    token = fin.read().strip()
 bot = commands.Bot(command_prefix='!', token=token, intents=intents)
-
-
-# In[ ]:
 
 
 def get_n_projects(headless=False):
@@ -118,81 +105,3 @@ async def main():
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
-
-
-# In[ ]:
-
-
-# assert get_n_projects
-
-# with open('creds.txt') as fin:
-#     uname, pwd = fin.read().strip().split(',')
-
-# while True:
-#     with open("nprojs.txt") as fin:
-#         n_pers = int(fin.read())
-
-#     n_read = get_n_projects(True)
-    
-#     if n_read != n_pers:
-#         assert n_pers < n_read, f"{n_pers} > {n_read}"
-#         sp.run(["notify-send", "--urgency=CRITICAL", f"{n_read - n_pers} project(s) added"])
-#     else:
-#         sp.run(["notify-send", f"No project(s) added"])
-
-#     with open("nprojs.txt", "w") as fout:
-#         print(n_read, file=fout)
-
-#     sleep(5 * 60)
-
-    
-# the scheme is as follows:
-# on each iteration of the algo, check if the persisted N matches the N read.
-# If not (assert N_r - N_p > 0), notify
-# If equal, do nothing
-    
-# todo: read-eval and write-print
-# + ptext format
-# + minimal parsing by me
-
-# get pers projects
-# get current projects
-# compare:
-#  if addition: notify
-
-
-# In[ ]:
-
-
-# BELOW CELLS NON-ESSENTIAL / TINKERING
-
-
-# In[ ]:
-
-
-# link_fmt = "https://projectforum.tudelft.nl/course_editions/59/projects?page=%s"
-# all_projects = dict()
-# for page in range(5):
-#     driver.get(link_fmt.format(page))
-#     page_projects_we = driver.find_elements(By.CLASS_NAME, "project")
-#     page_projects = [project_extract(we) for we in projects_we]
-#     for project in page_projects:
-#         all_projects[project['name']] = 
-
-
-# In[ ]:
-
-
-# projects_we = driver.find_elements(By.CLASS_NAME, "project")
-# projects = [project_extract(we) for we in projects_we]
-
-
-# In[ ]:
-
-
-# def project_extract(project_we):
-#     return {
-#         "name": project_we.find_element(By.CLASS_NAME, "project-name").text,
-#         "offerer": re.search("Offered by (.*)\n", project_we.text).group(1)
-#     }
-
